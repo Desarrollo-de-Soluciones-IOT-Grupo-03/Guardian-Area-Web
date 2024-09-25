@@ -1,0 +1,17 @@
+.sidenav-header {
+  color: #fff!important;
+  text-align: center;
+  padding-top: 1.5rem;
+}
+
+.span{
+  color: #fff;
+}
+
+#label {
+  color: #fff;
+}
+
+.hide-header-text{
+  display: none;
+}

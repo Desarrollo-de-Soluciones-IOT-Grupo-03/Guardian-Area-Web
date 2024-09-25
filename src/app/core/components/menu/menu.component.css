@@ -1,0 +1,28 @@
+.content {
+  padding: 0 1rem;
+  background-color: rgb(255, 255, 255);
+}
+
+mat-toolbar {
+  position: relative;
+  z-index: 5;
+  background: #fff;
+}
+
+mat-sidenav-container {
+  height: calc(100vh);
+  background: linear-gradient(180deg, #02273a 0%, #006aa1 47%, #02273a 99%);
+}
+
+mat-sidenav{
+  border-radius: none;
+  background: linear-gradient(180deg, #02273a 0%, #006aa1 47%, #02273a 99%);
+}
+
+.container{
+  display: flex;
+}
+
+.hide-header-text{
+  display: none;
+}
