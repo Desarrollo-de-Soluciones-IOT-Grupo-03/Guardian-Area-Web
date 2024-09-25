@@ -1,0 +1,51 @@
+<div class="container">
+  <div class="container-sign-up">
+    <div class="header">
+      <span>Registrate a </span>
+      <h1>Guardian Area</h1>
+      <label class="subtitle">Agregar un método de Pago</label>
+    </div>
+    <div class="form-container">
+      <form class="form" [formGroup]="form">
+        <div class="form-field">
+          <label>Nombre del Titular</label>
+          <mat-form-field appearance="outline">
+            <input type="text" matInput formControlName="name" placeholder="Ingresa tu nombre" class="form-control">
+            <mat-icon matSuffix>text</mat-icon>
+            <mat-error app-field-error-messages controlName="name"></mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-field">
+          <label>Número de Tarjeta</label>
+          <mat-form-field appearance="outline">
+            <input type="text" matInput formControlName="cardNumber" placeholder="Ingresa tu número de tarjeta"
+              class="form-control">
+            <mat-error app-field-error-messages controlName="cardNumber"></mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label>CCV</label>
+            <mat-form-field appearance="outline">
+              <input type="text" matInput formControlName="cvv" placeholder="Ingresa tu departamento"
+                class="form-control">
+              <mat-error app-field-error-messages controlName="cvv"></mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-field">
+            <label>Fecha de Vencimiento</label>
+            <mat-form-field appearance="outline">
+              <input type="text" matInput formControlName="expirationDate" placeholder="Ingresa tu provincia"
+                class="form-control">
+              <mat-error app-field-error-messages controlName="expirationDate"></mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+      <button mat-button class="primary-button" routerLink="/guardian-area/home">Registrase</button>
+    </div>
+  </div>
+  <div class="container-logo">
+    <img src="images/register-payment-method.svg" alt="Sign In" />
+  </div>
+</div>
