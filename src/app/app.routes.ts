@@ -31,6 +31,10 @@ export const routes: Routes = [
       {
         path: 'home',
         loadComponent: () => import('@home/pages/main-panel/main-panel.component').then(m => m.MainPanelComponent),
+      },
+      {
+        path: 'activity-history',
+        loadComponent: () => import('@activities/pages/activity-history/activity-history.component').then(m => m.ActivityHistoryComponent),
       }
     ]
   },
