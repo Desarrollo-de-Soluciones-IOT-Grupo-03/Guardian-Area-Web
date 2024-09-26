@@ -13,7 +13,7 @@ export class MiniMapComponent implements AfterViewInit, OnDestroy {
 
 
   @ViewChild('map') divMap?: ElementRef;
-  zoom: number = 10;
+  zoom: number = 13;
   map?: Map;
   public currentCenter: LngLat = new LngLat(-77.0428, -12.0464);
 
