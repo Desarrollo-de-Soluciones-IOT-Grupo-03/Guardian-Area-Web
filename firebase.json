@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "dist/guardian-area-web/browser",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}

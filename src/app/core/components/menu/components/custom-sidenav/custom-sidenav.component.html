@@ -1,0 +1,16 @@
+<div class="sidenav-header">
+  <img src="images/guardian-area-logo.svg" alt="Guardian Area Logo" [width]="profilePicSize()" height="auto">
+  <div class="header-text" [class.hide-header-text]="sideNavCollapsed()">
+    <h3>Dashboards</h3>
+  </div>
+  <mat-nav-list>
+    @for (item of menuItem(); track $index) {
+    <a mat-list-item [routerLink]="item.route" routerLinkActive="active" id="list-item">
+      <mat-icon matListItemIcon>
+        <img [src]="item.icon" alt="Icon dashboard" width="20px">
+      </mat-icon>
+      <span id="label" matListItemTitle>{{item.label}}</span>
+    </a>
+    }
+  </mat-nav-list>
+</div>

@@ -1,0 +1,88 @@
+<div class="container">
+  <div class="container-sign-up">
+    <div class="header">
+      <span>Registrate a </span>
+      <h1>Guardian Area</h1>
+      <label class="subtitle">Información Básica del Usuario</label>
+    </div>
+    <div class="form-container">
+      <form class="form" [formGroup]="form">
+        <div class="form-row">
+          <div class="form-field">
+            <label>Nombres</label>
+            <mat-form-field appearance="outline">
+              <input type="text" matInput formControlName="name" placeholder="Ingresa tu nombre" class="form-control">
+              <mat-icon matSuffix>text</mat-icon>
+              <mat-error app-field-error-messages controlName="name">El nombre es <strong>requerido</strong></mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-field">
+            <label>Apellidos</label>
+            <mat-form-field appearance="outline">
+              <input type="text" matInput formControlName="lastName" placeholder="Ingresa tu apellido"
+                class="form-control">
+              <mat-error app-field-error-messages controlName="lastName">El apellido es <strong>requerido</strong></mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label>Departamento</label>
+            <mat-form-field appearance="outline">
+              <input type="text" matInput formControlName="city" placeholder="Ingresa tu departamento"
+                class="form-control">
+              <mat-error app-field-error-messages controlName="city"></mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-field">
+            <label>Distrito</label>
+            <mat-form-field appearance="outline">
+              <input type="text" matInput formControlName="district" placeholder="Ingresa tu provincia"
+                class="form-control">
+              <mat-error app-field-error-messages controlName="district"></mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label>Dirección</label>
+            <mat-form-field appearance="outline">
+              <input type="text" matInput formControlName="address" placeholder="Ingresa tu dirección"
+                class="form-control">
+              <mat-icon matSuffix>address</mat-icon>
+              <mat-error app-field-error-messages controlName="address"></mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-field">
+            <label>Correo</label>
+            <mat-form-field appearance="outline">
+              <input type="email" matInput formControlName="email" placeholder="Ingresa tu correo" class="form-control">
+              <mat-icon matSuffix>email</mat-icon>
+              <mat-error app-field-error-messages controlName="email"></mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label>Contraseña</label>
+            <mat-form-field appearance="outline">
+              <input type="password" matInput formControlName="password" placeholder="Ingresa tu contraseña"
+                class="form-control">
+              <mat-icon matSuffix>password</mat-icon>
+              <mat-error app-field-error-messages controlName="password"></mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="terms-check">
+          <mat-checkbox class="example-margin" formControlName="terms">Acepto los <span>Términos y Condiciones</span> y
+            la <span>Política de Privacidad de GuardianArea</span>,
+            asegurando el uso responsable y seguro de mis datos personales.</mat-checkbox>
+        </div>
+      </form>
+      <button mat-button class="primary-button" routerLink="./form-plan">Continuar</button>
+    </div>
+  </div>
+  <div class="container-logo">
+    <img src="images/register.svg" alt="Sign In" />
+  </div>
+</div>

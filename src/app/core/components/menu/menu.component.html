@@ -1,0 +1,15 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav opened mode="side" [style.width]="sidenavWidth()" [class.hide-header-text]="collapse()">
+    <app-custom-sidenav [collapse]="collapse()"></app-custom-sidenav>
+  </mat-sidenav>
+  <mat-sidenav-content class="content" [style.margin-left]="sidenavWidth()">
+    <mat-toolbar>
+      <button mat-icon-button (click)="collapse.set(!collapse())">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </mat-toolbar>
+    <div class="content-containerr">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

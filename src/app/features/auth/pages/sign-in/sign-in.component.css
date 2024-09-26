@@ -1,0 +1,81 @@
+.container {
+  color: var(--primary-color);
+}
+.header {
+  span {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  h1 {
+    margin-top: 1rem;
+    font-size: 4rem;
+    font-weight: 600;
+  }
+}
+
+.container-sign-in {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.form-container {
+  width: 70%;
+  max-width: 390px;
+}
+
+.container,
+.container-logo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+}
+
+.container-logo img {
+  height: 100%;
+}
+
+.forget-password {
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem 0;
+  font-weight: 500;
+  margin-top: 1.5rem;
+}
+
+.primary-button {
+  margin-top: 1rem;
+  width: 100%;
+  padding: 1rem 1rem;
+  border-radius: 0.6rem;
+  background-color: var(--primary-color);
+  color: white !important;
+  font-size: 1rem;
+}
+
+.create-account {
+  font-weight: 500;
+  span {
+    color: var(--accent-color);
+  }
+}
+
+.forget-password,
+.create-account:hover {
+  cursor: pointer;
+}
+
+
+@media (max-width: 992px) {
+  .container-logo {
+    display: none;
+  }
+  .header {
+    text-align: center;
+  }
+}
