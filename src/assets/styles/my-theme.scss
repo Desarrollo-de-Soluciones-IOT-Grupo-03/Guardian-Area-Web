@@ -1,0 +1,15 @@
+@use '@angular/material' as mat;
+@use './m3-theme' as customTheme;
+
+body {
+  @include mat.all-component-themes(customTheme.$light-theme);
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+html {
+  height: 100%;
+}
+
+
+@include mat.core();
+@include mat.color-variants-backwards-compatibility(customTheme.$light-theme);
