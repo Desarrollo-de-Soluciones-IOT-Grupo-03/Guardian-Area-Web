@@ -3,10 +3,11 @@ import { CommonModule } from '@angular/common';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MenuItem } from '../models/menu-item';
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-custom-sidenav',
   standalone: true,
-  imports: [CommonModule, MatListModule, MatIconModule],
+  imports: [CommonModule, MatListModule, MatIconModule, RouterLink],
   templateUrl: './custom-sidenav.component.html',
   styleUrl: './custom-sidenav.component.css'
 })
@@ -22,12 +23,12 @@ export class CustomSidenavComponent {
     {
       icon: 'images/panel-principal.svg',
       label: 'Panel Principal',
-      route: '/home'
+      route: '/guardian-area/home'
     },
     {
       icon: 'images/notificacion.svg',
       label: 'Historial de Actividades',
-      route: '/history'
+      route: '/guardian-area/activity-history'
     },
     {
       icon: 'images/microfono.svg',

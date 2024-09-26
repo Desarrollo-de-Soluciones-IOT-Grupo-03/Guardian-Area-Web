@@ -12,6 +12,7 @@
       "@auth/*": ["src/app/features/*"],
       "@home/*": ["src/app/features/home/*"],
       "@maps/*": ["src/app/features/maps/*"],
+      "@activities/*": ["src/app/features/activities/*"],
     },
     "outDir": "./dist/out-tsc",
     "strict": true,
