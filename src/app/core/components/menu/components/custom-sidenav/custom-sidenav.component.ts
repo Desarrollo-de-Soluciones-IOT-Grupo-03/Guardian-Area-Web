@@ -38,6 +38,11 @@ export class CustomSidenavComponent {
       icon: 'images/latidos.svg',
       label: 'Funciones Vitales',
       route: '/vital-signs'
+    },
+    {
+      icon: 'images/geocerca.svg',
+      label: 'Geocercas',
+      route: '/geofences'
     }
   ]);
 

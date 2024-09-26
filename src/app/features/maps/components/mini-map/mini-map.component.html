@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="map-container">
+    <div #map id="map"></div>
+    <div class="floating-range">
+      <mat-slider min="-1" max="18" step="1">
+        <input matSliderThumb [value]="zoom" (input)="zoomChanged(zoomInput.value)" #zoomInput>
+      </mat-slider>
+    </div>
+  </div>
+</div>
