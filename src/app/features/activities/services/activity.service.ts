@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { environment } from '@env/environment';
+import { environment } from '@env/environment.development';
 import { Observable } from 'rxjs';
 import { Activity } from '../models/activity';
 import { ActivityQuery } from '../models/activity-query';
