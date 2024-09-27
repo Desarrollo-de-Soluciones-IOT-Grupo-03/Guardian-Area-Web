@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { HeartRateService } from '../../services/heart-rate.service';
 import { Chart, registerables } from 'chart.js';
-import { HeartRate } from '../../models/heart-rat';
+import { HeartRate } from '../../models/heart-rate';
 import { TableActivitiesComponent } from "../../../activities/components/table-activities/table-activities.component";
 
 Chart.register(...registerables);
