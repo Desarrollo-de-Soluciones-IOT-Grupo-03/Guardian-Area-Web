@@ -1,7 +1,7 @@
 export interface Activity {
-  evento: string;
-  fechaHora: Date;
-  duracion: string;
-  accionTomada: string;
+  event: string;
+  datetime: Date;
+  duration: string;
+  actionTaken: string;
   userId: number;
 }

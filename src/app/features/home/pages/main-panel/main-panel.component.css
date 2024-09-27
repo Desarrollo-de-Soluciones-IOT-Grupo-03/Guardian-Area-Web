@@ -7,11 +7,3 @@
   width: 100%;
   height: 100%;
 }
-
-table {
-  background-color: #fff;
-  th, td {
-    color: var(--primary-color);
-    border-color: var(--table-primary);
-  }
-}
