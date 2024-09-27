@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="oxygen-container">
+    <div class="chart-container">
+      <h3>Evolución de la Oxigenación durante los días del mes</h3>
+      <canvas id="chartOxygen" class="chartOxygen">
+        {{ chart }}
+      </canvas>
+    </div>
+
+    <div class="tip-container">
+      <h3>Consejos según la Oxigenación:</h3>
+      <ul>
+        <li>
+          <p><strong>95-100%:</strong> Nivel de oxígeno normal. No hay preocupaciones. Continúa con tus actividades
+            habituales y mantente hidratado.</p>
+        </li>
+        <li>
+          <p><strong>91-94%:</strong> Ligera disminución en los niveles de oxígeno. Puede ser útil descansar
+            y respirar aire fresco. Si los niveles permanecen bajos, es recomendable consultar a un profesional de
+            salud.</p>
+        </li>
+        <li>
+          <p><strong>Menos de 90%: </strong> Hipoxemia. Nivel bajo de oxígeno que puede indicar un problema
+            de salud significativo. Es necesario consultar a un médico de inmediato o acudir a un centro de atención
+            médica.p>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="activity-container">
+    <h3> Registro de Funciones Vitales </h3>
+    <app-table-activities></app-table-activities>
+  </div>
+</div>
