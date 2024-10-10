@@ -22,28 +22,28 @@ export class CustomSidenavComponent {
   menuItem = signal<MenuItem[]>([
     {
       icon: 'images/panel-principal.svg',
-      label: 'Panel Principal',
+      label: 'Main Panel',
       route: '/guardian-area/home'
     },
     {
       icon: 'images/notificacion.svg',
-      label: 'Historial de Actividades',
+      label: 'Activity History',
       route: '/guardian-area/activity-history'
     },
     {
       icon: 'images/microfono.svg',
-      label: 'Hablar en el Dispositivo',
+      label: 'Speak on Device',
       route: '/talk'
     },
     {
       icon: 'images/latidos.svg',
-      label: 'Funciones Vitales',
+      label: 'Vital Functions',
       route: '/guardian-area/vital-functions'
     },
     {
       icon: 'images/geocerca.svg',
-      label: 'Geocercas',
-      route: '/geofences'
+      label: 'Geofences',
+      route: '/guardian-area/geofences'
     }
   ]);
 
