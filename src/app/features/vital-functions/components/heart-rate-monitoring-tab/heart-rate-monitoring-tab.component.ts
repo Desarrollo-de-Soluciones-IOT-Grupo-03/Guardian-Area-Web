@@ -1,8 +1,8 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { HeartRateService } from '../../services/heart-rate.service';
+import { HeartRateService } from '@vital-functions/services/heart-rate.service';
 import { Chart, registerables } from 'chart.js';
-import { HeartRate } from '../../models/heart-rate';
-import { TableActivitiesComponent } from "../../../activities/components/table-activities/table-activities.component";
+import { TableActivitiesComponent } from '@activities/components/table-activities/table-activities.component';
+import { HeartRate } from '@vital-functions/models/heart-rate';
 
 Chart.register(...registerables);
 @Component({
@@ -40,6 +40,7 @@ export class HeartRateMonitoringTabComponent implements OnInit {
       datasets: [
         {
           data: this.data,
+          label: 'Frecuencia Cardíaca (bpm)',
           color: '#3e95cd',
           fill: true,
         },
