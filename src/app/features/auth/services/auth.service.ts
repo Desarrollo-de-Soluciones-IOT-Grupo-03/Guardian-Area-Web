@@ -5,6 +5,7 @@ import { InfoSession } from '../models/info-session';
 import { HttpClient } from '@angular/common/http';
 import { AuthenticationReq } from '../models/authentication-req';
 import { AuthStatus } from '../enums/auth-status';
+import { RegisterReq } from '../models/register-req';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,14 @@ export class AuthService {
           this._authStatus.set(AuthStatus.authenticated);
           localStorage.setItem('token', response.token);
         }),
+        map(() => true),
+      );
+  }
+
+  signUp(registerReq: RegisterReq): Observable<boolean> {
+    const url = this.baseUrl + '/sign-up';
+    return this.http.post(url, registerReq)
+      .pipe(
         map(() => true),
       );
   }
