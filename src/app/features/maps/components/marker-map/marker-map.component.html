@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="map-container">
+    <div #map id="map"></div>
+    <div class="floating-range">
+      <mat-slider min="-1" max="18" step="1">
+        <input matSliderThumb [value]="zoom" (input)="zoomChanged(zoomInput.value)" #zoomInput>
+      </mat-slider>
+    </div>
+  </div>
+  <button class="primary-button icon-button" (click)="createMarker()" [disabled]="markers.length >= 4">
+    <mat-icon>add_location</mat-icon> Add
+  </button>
+  <div class="markers-container">
+    <table mat-table [dataSource]="markers">
+      <ng-container matColumnDef="latitude">
+        <th mat-header-cell *matHeaderCellDef class="latitude-column"> Latitude </th>
+        <td mat-cell *matCellDef="let marker" class="latitude-column"> {{marker._lngLat.lat | number:'1.5'}} </td>
+      </ng-container>
+      <ng-container matColumnDef="longitude">
+        <th mat-header-cell *matHeaderCellDef class="longitude-column"> Longitude </th>
+        <td mat-cell *matCellDef="let marker" class="longitude-column"> {{marker._lngLat.lng | number:'1.5'}} </td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef class="actions-column"> Actions </th>
+        <td mat-cell *matCellDef="let marker; let i = index" class="actions-column">
+          <button class="primary-button" (click)="removeMarker(i)">
+            Delete
+          </button>
+        </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</div>
