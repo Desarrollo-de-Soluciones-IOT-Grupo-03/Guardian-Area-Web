@@ -5,7 +5,7 @@ import { Device } from '../../models/device';
 import { CommonModule } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
-import { CustomDialogComponent } from '@app/shared/component/custom-dialog/custom-dialog.component';
+import { CustomDialogComponent } from '@app/shared/components/custom-dialog/custom-dialog.component';
 
 @Component({
   selector: 'app-devices',

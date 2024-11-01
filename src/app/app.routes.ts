@@ -4,7 +4,7 @@ import { isAthenticatedGuard } from './features/auth/guards/is-athenticated.guar
 
 export const routes: Routes = [
   {
-    path: 'guardian-area',
+    path: ':userId',
     component: MenuComponent,
     canActivate: [ isAthenticatedGuard ],
     children: [
