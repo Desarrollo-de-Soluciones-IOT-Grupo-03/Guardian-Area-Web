@@ -35,6 +35,10 @@ export const routes: Routes = [
       {
         path: 'activity-history',
         loadComponent: () => import('@activities/pages/activity-history/activity-history.component').then(m => m.ActivityHistoryComponent),
+      },
+      {
+        path: 'vital-functions',
+        loadComponent: () => import('@vital-functions/pages/vital-functions/vital-functions.component').then(m => m.VitalFunctionsComponent),
       }
     ]
   },

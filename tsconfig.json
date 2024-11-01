@@ -13,6 +13,7 @@
       "@home/*": ["src/app/features/home/*"],
       "@maps/*": ["src/app/features/maps/*"],
       "@activities/*": ["src/app/features/activities/*"],
+      "@vital-functions/*": ["src/app/features/vital-functions/*"],
     },
     "outDir": "./dist/out-tsc",
     "strict": true,

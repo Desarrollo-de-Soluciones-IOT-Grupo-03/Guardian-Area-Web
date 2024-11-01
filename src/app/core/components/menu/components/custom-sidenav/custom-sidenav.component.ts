@@ -32,13 +32,13 @@ export class CustomSidenavComponent {
     },
     {
       icon: 'images/microfono.svg',
-      label: 'Hablar con el Dispositivo',
+      label: 'Hablar en el Dispositivo',
       route: '/talk'
     },
     {
       icon: 'images/latidos.svg',
       label: 'Funciones Vitales',
-      route: '/vital-signs'
+      route: '/guardian-area/vital-functions'
     },
     {
       icon: 'images/geocerca.svg',
