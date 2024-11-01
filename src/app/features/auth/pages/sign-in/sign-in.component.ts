@@ -33,7 +33,7 @@ export class SignInComponent {
           this._router.navigate(['/guardian-area/home']);
         },
         error: (error) => {
-          this._snackBar.open(error.error.message, 'Cerrar', {
+          this._snackBar.open(error.error.message, 'Close', {
             duration: 3000,
             horizontalPosition: 'right',
             verticalPosition: 'top'

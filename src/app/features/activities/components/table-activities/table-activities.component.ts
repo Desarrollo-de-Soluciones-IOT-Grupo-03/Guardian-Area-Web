@@ -30,7 +30,7 @@ export class TableActivitiesComponent implements OnInit{
     this._activityService.getAllActivitiesByUserId(query).subscribe(
       {
         next: (activities: Activity[]) => this.activities = activities,
-        error: err => this.openSnackBar('Error al obtener las actividades', 'Cerrar')
+        error: err => this.openSnackBar('Error al obtener las actividades', 'Close')
       }
     )
   }
