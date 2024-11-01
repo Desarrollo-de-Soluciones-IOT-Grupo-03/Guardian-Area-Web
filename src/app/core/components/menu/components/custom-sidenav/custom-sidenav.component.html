@@ -5,7 +5,7 @@
   </div>
   <mat-nav-list>
     @for (item of menuItem(); track $index) {
-    <a mat-list-item [routerLink]="item.route" routerLinkActive="active" id="list-item">
+    <a mat-list-item (click)="goToMenuOption(item.route)" routerLinkActive="active" id="list-item">
       <mat-icon matListItemIcon>
         <img [src]="item.icon" alt="Icon dashboard" width="20px">
       </mat-icon>
