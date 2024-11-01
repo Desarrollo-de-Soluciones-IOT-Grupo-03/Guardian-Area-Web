@@ -1,0 +1,24 @@
+<div class="containter">
+  <div class="header-container">
+    <h2>Devices</h2>
+    <span class="flex-spacer"></span>
+    <button mat-button class="primary-button icon-button" (click)="openDialog()">
+      <mat-icon class="icon">add</mat-icon>Add
+    </button>
+  </div>
+  <div class="devices-container">
+    @for (device of devices; track $index) {
+    <div class="device-container">
+      <img src="images/watch.svg" alt="Device Image">
+      <div class="">
+        <h3>Device</h3>
+        <p>{{device.name}}</p>
+        <span class="device-mode">{{device.mode | titlecase}}</span>
+      </div>
+      <h5 [ngStyle]="{'color': device.state == deviceState.CONNECTED ? 'green' : 'red'}">
+        {{device.state}}
+      </h5>
+    </div>
+    }
+  </div>
+</div>
