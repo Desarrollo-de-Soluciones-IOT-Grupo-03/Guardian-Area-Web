@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { SpinnerService } from '@app/shared/services/spinner.service';
 import { Subscription } from 'rxjs';
 
@@ -10,12 +10,12 @@ import { Subscription } from 'rxjs';
   styleUrl: './spinner.component.css'
 })
 export class SpinnerComponent implements OnInit {
+  private _spinnerService = inject(SpinnerService);
   showSpinner: boolean = false;
   spinnerSubscription!: Subscription;
-  constructor(private spinnerService: SpinnerService) { }
 
   ngOnInit(): void {
-    this.spinnerSubscription = this.spinnerService.onObservable().subscribe(viewSpinner => {
+    this.spinnerSubscription = this._spinnerService.onObservable().subscribe(viewSpinner => {
       this.showSpinner = viewSpinner;
     });
   }

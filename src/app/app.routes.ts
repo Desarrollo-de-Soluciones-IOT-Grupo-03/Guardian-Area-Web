@@ -6,7 +6,7 @@ export const routes: Routes = [
   {
     path: ':userId',
     component: MenuComponent,
-    canActivate: [ isAthenticatedGuard ],
+    canActivate: [isAthenticatedGuard],
     children: [
       {
         path: 'home',
@@ -39,12 +39,7 @@ export const routes: Routes = [
       },
       {
         path: 'profile',
-        children: [
-          {
-            path: '',
-            loadComponent: () => import('@settings/pages/profile/profile.component').then(m => m.ProfileComponent),
-          }
-        ]
+        loadComponent: () => import('@settings/pages/profile/profile.component').then(m => m.ProfileComponent),
       },
       {
         path: 'devices',
@@ -85,7 +80,7 @@ export const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'auth',
+    redirectTo: 'auth/sign-in',
     pathMatch: 'full',
   },
 
