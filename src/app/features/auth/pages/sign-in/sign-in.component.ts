@@ -5,7 +5,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
@@ -20,6 +20,7 @@ export class SignInComponent {
   private _formBuilder = inject(FormBuilder);
   private _authService = inject(AuthService);
   private _router = inject(Router);
+  private _activatedRoute = inject(ActivatedRoute);
 
   form: FormGroup = this._formBuilder.group({
     username: new FormControl<string>('', [Validators.required]),
@@ -30,7 +31,8 @@ export class SignInComponent {
     this._authService.signIn(this.form.value).subscribe(
       {
         next: success => {
-          this._router.navigate(['/guardian-area/home']);
+          const userId = this._authService.userId();
+          this._router.navigate([userId, 'home']);
         },
         error: (error) => {
           this._snackBar.open(error.error.message, 'Close', {

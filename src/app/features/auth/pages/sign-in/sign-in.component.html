@@ -9,26 +9,27 @@
         <div class="form-field">
           <label>Username</label>
           <mat-form-field appearance="outline">
-            <input matInput formControlName="username" placeholder="Ingresa tu correo" class="form-control">
-            <mat-icon matSuffix>email</mat-icon>
-            <mat-error app-field-error-messages controlName="username">El correo <strong>requerido</strong></mat-error>
+            <input matInput formControlName="username" placeholder="Enter a username" class="form-control">
+            <mat-icon matSuffix>person</mat-icon>
+            <mat-error app-field-error-messages controlName="username">The username is
+              <strong>required</strong></mat-error>
           </mat-form-field>
         </div>
         <div class="form-field">
-          <label>Contraseña</label>
+          <label>Password</label>
           <mat-form-field appearance="outline">
-            <input type="password" matInput formControlName="password" placeholder="Ingresa tu contraseña"
+            <input type="password" matInput formControlName="password" placeholder="Enter your password"
               class="form-control">
             <mat-icon matSuffix>password</mat-icon>
-            <mat-error app-field-error-messages controlName="password">La contraseña es
-              <strong>requerida</strong></mat-error>
+            <mat-error app-field-error-messages controlName="password">The password is
+              <strong>required</strong></mat-error>
           </mat-form-field>
         </div>
-        <button type="submit" [disabled]="form.invalid" mat-button class="primary-button">Iniciar Sesión</button>
+        <button type="submit" [disabled]="form.invalid" mat-button class="primary-button">Sign In</button>
       </form>
     </div>
-    <label class="forget-password">Olvidaste tu contraseña</label>
-    <a routerLink="/auth/sign-up" class="create-account">¿No tienes una cuenta? <span>Regístrate Aquí</span></a>
+    <label class="forget-password">Forgot your password?</label>
+    <a routerLink="/auth/sign-up" class="create-account">Don't have an account? <span>Sign Up Here</span></a>
   </div>
   <div class="container-logo">
     <img src="images/sign-in.svg" alt="Sign In" />
