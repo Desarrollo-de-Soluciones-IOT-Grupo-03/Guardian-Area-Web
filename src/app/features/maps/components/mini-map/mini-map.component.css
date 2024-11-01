@@ -21,9 +21,10 @@
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: white;
+  background-color: transparent;
+  backdrop-filter: blur(10px);
+  background: transparent;
   border-radius: 1rem;
   padding: 0 1rem;
   z-index: 999;
-  box-shadow: 0px 0px 8px 1px var(--accent-color);
 }

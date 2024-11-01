@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
-import { LngLat, Map } from 'mapbox-gl';
+import { LngLat, Map, Marker } from 'mapbox-gl';
 import { MatSliderModule } from '@angular/material/slider';
 
 @Component({
@@ -10,7 +10,6 @@ import { MatSliderModule } from '@angular/material/slider';
   styleUrl: './mini-map.component.css'
 })
 export class MiniMapComponent implements AfterViewInit, OnDestroy {
-
 
   @ViewChild('map') divMap?: ElementRef;
   zoom: number = 13;
@@ -27,7 +26,6 @@ export class MiniMapComponent implements AfterViewInit, OnDestroy {
       center: this.currentCenter,
       zoom: this.zoom,
     });
-
     this.mapListeners();
   }
 
