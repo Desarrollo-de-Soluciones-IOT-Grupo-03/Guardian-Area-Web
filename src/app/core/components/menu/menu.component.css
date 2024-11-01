@@ -14,15 +14,19 @@ mat-sidenav-container {
   background: linear-gradient(180deg, #02273a 0%, #006aa1 47%, #02273a 99%);
 }
 
-mat-sidenav{
+mat-sidenav {
   border-radius: none;
   background: linear-gradient(180deg, #02273a 0%, #006aa1 47%, #02273a 99%);
 }
 
-.container{
+.container {
   display: flex;
 }
 
-.hide-header-text{
+.hide-header-text {
   display: none;
+}
+
+.icon{
+  color: var(--primary-color);
 }
