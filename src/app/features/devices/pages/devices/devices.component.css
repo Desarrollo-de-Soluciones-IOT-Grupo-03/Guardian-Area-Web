@@ -1,0 +1,43 @@
+.container {
+  color: var(--primary-color);
+}
+
+.device-container {
+  margin: 30px 0;
+  border-radius: 15px;
+  box-shadow: 0px 0px 10px rgba(0, 191, 255, 0.6);
+  border: 1px solid var(--accent-color);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 350px;
+  h3,
+  h5 {
+    margin: 0;
+  }
+}
+
+.device-container:hover {
+  box-shadow: 0px 0px 10px rgba(0, 191, 255, 0.9);
+}
+
+.device-container {
+  margin: 30px auto;
+}
+
+.device-mode {
+  color: #7c8fac;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .device-container {
+    width: 100%;
+    flex-direction: column;
+    text-align: center;
+  }
+  h5 {
+    margin-top: 10px !important;
+  }
+}
