@@ -8,6 +8,7 @@
   height: 440px;
   min-width: 300px;
   min-height: 300px;
+  margin-bottom: 1rem;
 }
 
 #map {
@@ -55,4 +56,16 @@ table {
 
 .table-container {
   overflow: auto;
+}
+
+.markers-container{
+  margin: 1rem 0;
+}
+
+.button-container{
+  display: flex;
+}
+
+.geofence-label{
+  margin-right: 1rem;
 }

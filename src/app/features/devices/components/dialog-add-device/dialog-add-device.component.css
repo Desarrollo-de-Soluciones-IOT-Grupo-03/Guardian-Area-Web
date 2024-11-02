@@ -1,0 +1,12 @@
+.container {
+  padding: 20px;
+  background-color: white;
+}
+
+.actions-container{
+  display: flex;
+  justify-content: center;
+  button{
+    width: 40%;
+  }
+}

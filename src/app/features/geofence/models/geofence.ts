@@ -1,7 +1,10 @@
-import { GeofenceState } from "../enums/geofence-state";
+import { GeofenceStatus } from "../enums/geofence-state";
+import { Coordinates } from "./coordinate";
 
 export interface Geofence {
   id: string;
   name: string;
-  state: GeofenceState;
+  geoFenceStatus: GeofenceStatus;
+  coordinates: Coordinates[];
+  guardianAreaDeviceRecordId: string;
 }
