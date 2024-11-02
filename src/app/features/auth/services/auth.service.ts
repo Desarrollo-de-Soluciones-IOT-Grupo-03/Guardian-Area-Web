@@ -48,7 +48,10 @@ export class AuthService {
   logOut(): void {
     this._currentUserName.set(null);
     this._authStatus.set(AuthStatus.unauthenticated);
+    this._userId.set(null);
     localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    localStorage.removeItem('deviceRecordId');
   }
 
   public get token(): string {
