@@ -10,6 +10,8 @@ import { UserService } from '@app/features/settings/services/user.service';
 import { finalize } from 'rxjs';
 import { UnderScoreToSpacePipe } from '@app/shared/pipes/under-score-to-space.pipe';
 import { DeviceService } from '../../services/device.service';
+import { DialogAddDeviceComponent } from '../../components/dialog-add-device/dialog-add-device.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-devices',
@@ -22,6 +24,7 @@ export class DevicesComponent implements OnInit {
   private _activatedRoute = inject(ActivatedRoute);
   private _userService = inject(UserService);
   private _deviceService = inject(DeviceService);
+  private _snackBar = inject(MatSnackBar);
 
   readonly dialog = inject(MatDialog);
   private _userId: string | null = null;
@@ -34,7 +37,9 @@ export class DevicesComponent implements OnInit {
     this._userService.getAllDevices(this._userId).pipe(finalize(() => this.showSpinner = false)).subscribe(
       {
         next: (devices) => this.devices = devices,
-        error: (error) => console.error(error)
+        error: (error) => this._snackBar.open('An error occurred while loading the devices', 'Close',
+          { duration: 5000 }
+        )
       }
     );
   }
@@ -53,15 +58,22 @@ export class DevicesComponent implements OnInit {
     });
   }
 
-  onpenSelectDevice(): void {
-    this.dialog.open(CustomDialogComponent, {
-      data: {
-        title: 'Select Device',
-        message: 'Are you sure you want to select this device?',
-        primaryButton: 'Add Device',
-        secondaryButton: 'Cancel'
+  registerDevice(): void {
+    const dialogRef = this.dialog.open(DialogAddDeviceComponent);
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.selectedDeviceId = result;
+        this.showSpinner = true;
+        this._deviceService.register({ guardianAreaDeviceRecordId: result })
+        .pipe(finalize(() => this.showSpinner = false))
+          .subscribe({
+            next: () => this._snackBar.open('Device added successfully', 'Close', { duration: 5000 }),
+            error: () => this._snackBar.open('An error occurred while adding the device', 'Close', { duration: 5000 })
+          })
+        this._snackBar.open('Device added successfully', 'Close', { duration: 5000 });
       }
     });
+
   }
 
   selectDevice(idDevice: string) {
