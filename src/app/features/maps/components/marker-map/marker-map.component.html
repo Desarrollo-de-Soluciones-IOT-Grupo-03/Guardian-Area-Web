@@ -7,9 +7,20 @@
       </mat-slider>
     </div>
   </div>
-  <button class="primary-button icon-button" (click)="createMarker()" [disabled]="markers.length >= 4">
-    <mat-icon>add_location</mat-icon> Add
-  </button>
+  <mat-label class="geofence-label">Geofence Name</mat-label>
+  <mat-form-field appearance="outline">
+    <input type="text" matInput class="form-control" [(ngModel)]="geofenceName" placeholder="Enter the name">
+  </mat-form-field>
+
+  <div class="button-container">
+    <button class="primary-button icon-button" (click)="createMarker()" [disabled]="markers.length >= 4">
+      <mat-icon>add_location</mat-icon> Add
+    </button>
+    <span class="flex-spacer"></span>
+    <button class="primary-button icon-button" (click)="onSave()" [disabled]="markers.length <= 3">
+      <mat-icon>save</mat-icon> Save Geofence
+    </button>
+  </div>
   <div class="markers-container">
     <table mat-table [dataSource]="markers">
       <ng-container matColumnDef="latitude">

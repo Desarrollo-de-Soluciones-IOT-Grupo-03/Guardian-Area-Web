@@ -1,23 +1,40 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, inject, OnDestroy, ViewChild } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatTable, MatTableModule } from '@angular/material/table';
+import { Router } from '@angular/router';
+import { AuthService } from '@app/features/auth/services/auth.service';
+import { DeviceService } from '@app/features/devices/services/device.service';
+import { GeofenceStatus } from '@app/features/geofence/enums/geofence-state';
+import { GeofenceReq } from '@app/features/geofence/models/geofence-req';
+import { GeofenceService } from '@app/features/geofence/services/geofence.service';
 import { LngLat, Map, Marker } from 'mapbox-gl';
 
 @Component({
   selector: 'app-marker-map',
   standalone: true,
-  imports: [MatSliderModule, MatIconModule, MatTableModule, CommonModule],
+  imports: [MatSliderModule, MatIconModule, MatTableModule, CommonModule, MatFormFieldModule,
+    MatFormFieldModule, MatInputModule, FormsModule
+  ],
   templateUrl: './marker-map.component.html',
   styleUrl: './marker-map.component.css'
 })
 export class MarkerMapComponent implements AfterViewInit, OnDestroy {
   @ViewChild(MatTable) table: MatTable<Marker> | undefined;
+  @ViewChild('map') divMap?: ElementRef;
+
+  private _deviceService = inject(DeviceService);
+  private _geofenceService = inject(GeofenceService);
+  private _router = inject(Router);
+  private _authService = inject(AuthService);
 
   displayedColumns: string[] = ['latitude', 'longitude', 'actions'];
+  geofenceName: string | null = null;
 
-  @ViewChild('map') divMap?: ElementRef;
   zoom: number = 16;
   map?: Map;
   public currentCenter: LngLat = new LngLat(-77.0428, -12.0464);
@@ -122,7 +139,7 @@ export class MarkerMapComponent implements AfterViewInit, OnDestroy {
     });
   }
 
-  removeMarker(indice: number):void {
+  removeMarker(indice: number): void {
     const marker = this.markers[indice];
     if (marker) {
       marker.remove();
@@ -130,5 +147,24 @@ export class MarkerMapComponent implements AfterViewInit, OnDestroy {
       this.table?.renderRows();
       this.updatePolygon();
     }
+  }
+
+  onSave(): void {
+    let req = {
+      name: this.geofenceName,
+      coordinates: this.markers.map(marker => {
+        const lngLat = marker.getLngLat();
+        return { latitude: lngLat.lat, longitude: lngLat.lng };
+      }),
+      geoFenceStatus: GeofenceStatus.ACTIVE,
+      guardianAreaDeviceRecordId: this._deviceService.deviceRecordId
+
+    } as GeofenceReq;
+
+    this._geofenceService.create(req).subscribe((response) => {
+      const userId = this._authService.userId;
+      this._router.navigate([`/${userId}/geofences`]);
+    });
+
   }
 }

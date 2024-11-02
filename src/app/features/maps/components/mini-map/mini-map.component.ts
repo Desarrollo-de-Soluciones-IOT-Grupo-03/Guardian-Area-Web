@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnDestroy, ViewChild } from '@angular/core';
 import { LngLat, Map, Marker } from 'mapbox-gl';
 import { MatSliderModule } from '@angular/material/slider';
 
@@ -17,7 +17,7 @@ export class MiniMapComponent implements AfterViewInit, OnDestroy {
   public currentCenter: LngLat = new LngLat(-77.0428, -12.0464);
 
   ngAfterViewInit(): void {
-    if (!this.divMap ) {
+    if (!this.divMap) {
       return;
     }
     this.map = new Map({
@@ -26,6 +26,8 @@ export class MiniMapComponent implements AfterViewInit, OnDestroy {
       center: this.currentCenter,
       zoom: this.zoom,
     });
+
+    new Marker().setLngLat(this.currentCenter).addTo(this.map);
     this.mapListeners();
   }
 
@@ -39,13 +41,13 @@ export class MiniMapComponent implements AfterViewInit, OnDestroy {
     });
 
     this.map?.on('zoomend', () => {
-      if ( this.map!.getZoom() < 18) return;
+      if (this.map!.getZoom() < 18) return;
       this.map!.setZoom(18);
 
     });
   }
 
-  zoomChanged(value: string): void{
+  zoomChanged(value: string): void {
     this.zoom = Number(value);
     this.map!.setZoom(this.zoom);
   }
