@@ -1,9 +1,12 @@
-import { DeviceMode } from "../enums/device-mode";
-import { DeviceState } from "../enums/device-state";
+import { DeviceCareMode } from "../enums/device-care-mode";
+import { DeviceStatus } from "../enums/device-status";
 
 export interface Device {
-  name: string;
-  deviceCode: string;
-  mode: DeviceMode;
-  state: DeviceState;
+  guardianAreaDeviceRecordId: string;
+  nickname: string;
+  bearer: string;
+  careMode: DeviceCareMode;
+  status: DeviceStatus;
+  userId: string;
+  apiKey: string;
 }

@@ -1,46 +1,47 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { DeviceMode } from '../../enums/device-mode';
-import { DeviceState } from '../../enums/device-state';
+import { DeviceStatus } from '../../enums/device-status';
 import { Device } from '../../models/device';
 import { CommonModule } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { CustomDialogComponent } from '@app/shared/components/custom-dialog/custom-dialog.component';
 import { ActivatedRoute } from '@angular/router';
+import { UserService } from '@app/features/settings/services/user.service';
+import { finalize } from 'rxjs';
+import { UnderScoreToSpacePipe } from '@app/shared/pipes/under-score-to-space.pipe';
+import { DeviceService } from '../../services/device.service';
 
 @Component({
   selector: 'app-devices',
   standalone: true,
-  imports: [CommonModule, MatIcon],
+  imports: [CommonModule, MatIcon, UnderScoreToSpacePipe],
   templateUrl: './devices.component.html',
   styleUrl: './devices.component.css'
 })
 export class DevicesComponent implements OnInit {
   private _activatedRoute = inject(ActivatedRoute);
+  private _userService = inject(UserService);
+  private _deviceService = inject(DeviceService);
 
+  readonly dialog = inject(MatDialog);
   private _userId: string | null = null;
+  showSpinner: boolean = false;
+  selectedDeviceId = this._deviceService.deviceRecordId || '';
 
   ngOnInit(): void {
     this._userId = this._activatedRoute.parent?.snapshot.paramMap.get('userId')!;
+    this.showSpinner = true;
+    this._userService.getAllDevices(this._userId).pipe(finalize(() => this.showSpinner = false)).subscribe(
+      {
+        next: (devices) => this.devices = devices,
+        error: (error) => console.error(error)
+      }
+    );
   }
-  readonly dialog = inject(MatDialog);
 
-  deviceState = DeviceState;
+  deviceState = DeviceStatus;
 
-  devices: Device[] = [
-    {
-      name: 'Device 1',
-      deviceCode: '123',
-      mode: DeviceMode.INFANTE,
-      state: DeviceState.CONNECTED
-    },
-    {
-      name: 'Device 2',
-      deviceCode: '456',
-      mode: DeviceMode.ADULTO,
-      state: DeviceState.DISCONNECTED
-    }
-  ];
+  devices: Device[] = [];
 
   openDialog(): void {
     this.dialog.open(CustomDialogComponent, {
@@ -61,6 +62,11 @@ export class DevicesComponent implements OnInit {
         secondaryButton: 'Cancel'
       }
     });
+  }
+
+  selectDevice(idDevice: string) {
+    this.selectedDeviceId = idDevice;
+    this._deviceService.selectDevice(idDevice);
   }
 
 }

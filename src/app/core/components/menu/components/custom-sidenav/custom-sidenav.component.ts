@@ -34,11 +34,6 @@ export class CustomSidenavComponent implements OnInit{
       route: 'home'
     },
     {
-      icon: 'images/notificacion.svg',
-      label: 'Activity History',
-      route: 'activity-history'
-    },
-    {
       icon: 'images/microfono.svg',
       label: 'Speak on Device',
       route: 'speak-on-device'

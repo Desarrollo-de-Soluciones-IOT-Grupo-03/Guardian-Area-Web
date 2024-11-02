@@ -1,4 +1,4 @@
-<div class="containter">
+<div class="container">
   <div class="header-container">
     <h2>Devices</h2>
     <span class="flex-spacer"></span>
@@ -6,19 +6,26 @@
       <mat-icon class="icon">add</mat-icon>Add
     </button>
   </div>
+  @if (showSpinner) {
+  <div class="spinner-container">
+    <div class="spinner-border" role="status"></div>
+  </div>
+  }@else {
   <div class="devices-container">
     @for (device of devices; track $index) {
-    <div class="device-container">
+    <div class="device-container" (click)="selectDevice(device.guardianAreaDeviceRecordId)"
+    [ngClass]="{'selected': selectedDeviceId == device.guardianAreaDeviceRecordId}">
       <img src="images/watch.svg" alt="Device Image">
       <div class="">
-        <h3>Device</h3>
-        <p>{{device.name}}</p>
-        <span class="device-mode">{{device.mode | titlecase}}</span>
+        <h3>{{device.nickname}}</h3>
+        <p>{{device.bearer | underScoreToSpace}}</p>
+        <span class="device-mode">{{device.careMode | titlecase}}</span>
       </div>
-      <h5 [ngStyle]="{'color': device.state == deviceState.CONNECTED ? 'green' : 'red'}">
-        {{device.state}}
+      <h5 [ngStyle]="{'color': device.status == deviceState.CONNECTED ? 'green' : 'red'}">
+        {{device.status}}
       </h5>
     </div>
     }
   </div>
+  }
 </div>

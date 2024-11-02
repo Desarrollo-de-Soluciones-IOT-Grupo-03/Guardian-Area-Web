@@ -108,8 +108,14 @@ button:hover {
 
 }
 
-
 @keyframes spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+/* Principal Container */
+.container {
+  color: var(--primary-color);
+  margin-top: 1rem;
+  padding: 0px 1rem;
 }

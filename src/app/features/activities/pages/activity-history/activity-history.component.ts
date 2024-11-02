@@ -34,7 +34,6 @@ export class ActivityHistoryComponent implements OnInit{
         next: (activities: Activity[]) => {
           this.activities = activities
         },
-        error: err => this.openSnackBar('Error al obtener las actividades', 'Close')
       }
     );
   }
