@@ -1,4 +1,4 @@
-export enum GeofenceState {
+export enum GeofenceStatus {
   ACTIVE = 'ACTIVE',
   INACTIVE = 'INACTIVE',
 }
