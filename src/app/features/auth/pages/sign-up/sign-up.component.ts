@@ -1,5 +1,11 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatOptionModule } from '@angular/material/core';
@@ -8,20 +14,31 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { Router, RouterModule } from '@angular/router';
-import { AuthService } from '../../services/auth.service';
-import { SpinnerService } from '@app/shared/services/spinner.service';
-import { RegisterReq } from '../../models/register-req';
-import { finalize } from 'rxjs';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { RouterModule, Router } from '@angular/router';
+import { RegisterReq } from '@auth/models';
+import { AuthService } from '@auth/services';
+import { SpinnerService } from '@shared/services';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [MatButtonModule, MatSlideToggleModule, FormsModule, MatFormFieldModule, MatInputModule,
-    ReactiveFormsModule, MatIconModule, RouterModule, MatCheckboxModule, MatSelectModule, MatOptionModule],
+  imports: [
+    MatButtonModule,
+    MatSlideToggleModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    RouterModule,
+    MatCheckboxModule,
+    MatSelectModule,
+    MatOptionModule,
+  ],
   templateUrl: './sign-up.component.html',
-  styleUrl: './sign-up.component.css'
+  styleUrl: './sign-up.component.css',
 })
 export class SignUpComponent {
   private _formBuilder = inject(FormBuilder);
@@ -44,7 +61,8 @@ export class SignUpComponent {
   signUp(): void {
     this._spinnerService.showSpinner();
     this.form.controls.roles.setValue([this.form.controls.role.value!]);
-    this._authService.signUp(this.form.getRawValue() as RegisterReq)
+    this._authService
+      .signUp(this.form.getRawValue() as RegisterReq)
       .pipe(finalize(() => this._spinnerService.hiddenSpinner()))
       .subscribe({
         next: () => {
@@ -54,9 +72,9 @@ export class SignUpComponent {
           this._snackBar.open(error.error.message, 'Close', {
             duration: 3000,
             horizontalPosition: 'right',
-            verticalPosition: 'top'
+            verticalPosition: 'top',
           });
-        }
-      })
+        },
+      });
   }
 }
