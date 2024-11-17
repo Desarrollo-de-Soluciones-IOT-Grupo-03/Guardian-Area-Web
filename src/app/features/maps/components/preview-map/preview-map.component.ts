@@ -1,5 +1,11 @@
-import { AfterViewInit, Component, ElementRef, Input, OnDestroy, ViewChild } from '@angular/core';
-import { Coordinates } from '@app/features/geofence/models/coordinate';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Input,
+  ViewChild,
+} from '@angular/core';
+import { Coordinates } from '@geofence/models';
 import { LngLat, Map, Marker } from 'mapbox-gl';
 
 @Component({
@@ -7,10 +13,10 @@ import { LngLat, Map, Marker } from 'mapbox-gl';
   standalone: true,
   imports: [],
   templateUrl: './preview-map.component.html',
-  styleUrl: './preview-map.component.css'
+  styleUrl: './preview-map.component.css',
 })
 export class PreviewMapComponent implements AfterViewInit {
-  @Input({required: true}) coordinate!: Coordinates;
+  @Input({ required: true }) coordinate!: Coordinates;
 
   @ViewChild('map') divMap?: ElementRef;
   zoom: number = 13;
@@ -26,10 +32,17 @@ export class PreviewMapComponent implements AfterViewInit {
       style: 'mapbox://styles/mapbox/streets-v12',
       center: this.currentCenter,
       zoom: this.zoom,
-      interactive: false
+      interactive: false,
     });
-    this.currentCenter = new LngLat(this.coordinate.longitude, this.coordinate.latitude);
+    this.currentCenter = new LngLat(
+      this.coordinate.longitude,
+      this.coordinate.latitude,
+    );
 
     new Marker().setLngLat(this.currentCenter).addTo(this.map);
+  }
+
+  ngOnDestroy(): void {
+    this.map?.remove();
   }
 }
