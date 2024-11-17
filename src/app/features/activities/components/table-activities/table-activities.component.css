@@ -4,4 +4,5 @@ table {
     color: var(--primary-color);
     border-color: var(--table-primary);
   }
+  margin-bottom: 10px;
 }
