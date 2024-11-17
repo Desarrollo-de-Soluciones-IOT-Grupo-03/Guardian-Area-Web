@@ -1,5 +1,12 @@
 import { Component, inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  FormsModule,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -11,9 +18,19 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-form-payment-method',
   standalone: true,
-  imports: [MatButtonModule, MatSlideToggleModule, FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatIconModule, RouterModule, MatCheckboxModule],
+  imports: [
+    MatButtonModule,
+    MatSlideToggleModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatIconModule,
+    RouterModule,
+    MatCheckboxModule,
+  ],
   templateUrl: './form-payment-method.component.html',
-  styleUrl: './form-payment-method.component.css'
+  styleUrl: './form-payment-method.component.css',
 })
 export class FormPaymentMethodComponent {
   private _formBuilder = inject(FormBuilder);
