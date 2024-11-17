@@ -1,7 +1,9 @@
 .container {
   width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
 }
-
 
 .map-container {
   position: relative;
@@ -9,6 +11,10 @@
   height: 440px;
   min-width: 300px;
   min-height: 300px;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 #map {
@@ -23,8 +29,8 @@
   transform: translateX(-50%);
   background-color: transparent;
   backdrop-filter: blur(10px);
-  background: transparent;
   border-radius: 1rem;
-  padding: 0 1rem;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   z-index: 999;
 }
