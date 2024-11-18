@@ -1,0 +1,42 @@
+.tab ul {
+  padding: 10px;
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  margin: 0;
+  color: var(--primary-color);
+  font-weight: 500;
+}
+
+.tab ul li {
+  display: block;
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  list-style-type: none;
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+  padding: 10px;
+}
+
+.tab ul li:last-child {
+  border-right: none;
+}
+
+.tab ul li:hover {
+  background-color: rgba(229, 228, 228, 0.438);
+  transition: 0.3s;
+}
+
+
+.tab ul li.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  height: 3px;
+  width: 100%;
+  background-color: var(--primary-color);
+  border-radius: 3px 3px 0 0;
+}
+
