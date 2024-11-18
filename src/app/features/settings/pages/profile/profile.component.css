@@ -5,7 +5,7 @@
   flex-direction: column;
   color: var(--primary-color);
   height: calc(100vh - 64px);
-
+  margin-top: 0;
   h3{
     margin: 0;
   }
