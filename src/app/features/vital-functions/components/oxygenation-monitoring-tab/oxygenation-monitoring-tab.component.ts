@@ -1,7 +1,5 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { OxygenSaturationService } from '../../services/oxygen-saturation.service';
-import { OxygenSaturation } from '../../models/oxygen-saturation';
-import { TableActivitiesComponent } from '@app/features/activities/components/table-activities/table-activities.component';
+import { TableActivitiesComponent } from '@activities/components';
+import { AfterViewInit, Component, Input, OnDestroy } from '@angular/core';
 import { Chart, registerables } from 'chart.js';
 
 Chart.register(...registerables);
@@ -10,47 +8,41 @@ Chart.register(...registerables);
   standalone: true,
   imports: [TableActivitiesComponent],
   templateUrl: './oxygenation-monitoring-tab.component.html',
-  styleUrl: './oxygenation-monitoring-tab.component.css'
+  styleUrl: './oxygenation-monitoring-tab.component.css',
 })
-export class OxygenationMonitoringTabComponent implements OnInit {
-  private _service: OxygenSaturationService = inject(OxygenSaturationService);
+export class OxygenationMonitoringTabComponent
+  implements AfterViewInit, OnDestroy
+{
+  @Input({ required: true }) oxygenSaturationData: number[] = [];
+  @Input({ required: true }) dates: string[] = [];
+  @Input({ required: true }) chart2: Chart | null = null;
 
-  chart: Chart | null = null;
-  labels: string[] = [];
-  data: number[] = [];
+  ngAfterViewInit(): void {
+    this._setChart();
+  }
 
-  ngOnInit(): void {
-    this._service.getAllOxygenSaturationRegisters().subscribe(
-      {
-        next: (oxygenSaturation: OxygenSaturation[]) => {
-          this.labels = oxygenSaturation.map((oxygenSaturation) => {
-            const date = new Date(oxygenSaturation.date);
-            return date.getDate().toString();
-          });
-          this.data = oxygenSaturation.map((oxygenSaturation) => parseInt(oxygenSaturation.avg_SpO2))!;
-          this._setChart();
-        },
-      }
-    );
+  ngOnDestroy(): void {
+    this.chart2?.destroy();
   }
 
   private _setChart(): void {
     const oxygenSaturation = {
-      labels: this.labels,
+      labels: this.dates,
       datasets: [
         {
-          data: this.data,
+          data: this.oxygenSaturationData,
+          label: 'Oxygen saturation (%)',
           color: '#3e95cd',
           fill: true,
         },
       ],
-    }
-    this.chart = new Chart('chartOxygen', {
+    };
+    this.chart2 = new Chart('chart2', {
       type: 'line',
       data: oxygenSaturation,
       options: {
         responsive: true,
-      }
+      },
     });
   }
 }
