@@ -1,25 +1,24 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { Device } from '@devices/models';
 import { environment } from '@env/environment.prod';
+import { User } from '@settings/models';
 import { Observable } from 'rxjs';
-import { User } from '../models/user';
-import { Device } from '@app/features/devices/models/device';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
   private readonly baseUrl: string = environment.apiUrl + 'users';
   private http = inject(HttpClient);
 
-  getById(id: string): Observable<User> {
+  getById(id: number): Observable<User> {
     const url = `${this.baseUrl}/${id}`;
     return this.http.get<User>(url);
   }
 
-  getAllDevices(id: string): Observable<Device[]> {
+  getAllDevices(id: number): Observable<Device[]> {
     const url = `${this.baseUrl}/${id}/devices`;
     return this.http.get<Device[]>(url);
   }
-
 }

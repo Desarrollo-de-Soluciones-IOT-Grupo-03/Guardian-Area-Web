@@ -1,0 +1,115 @@
+<div class="container">
+  <h2>Edit Profile</h2>
+
+  @if (showSpinner) {
+    <div class="spinner-container">
+      <div class="spinner-border" role="status"></div>
+    </div>
+  } @else {
+    <div class="content-wrapper">
+      <div class="img-container">
+        <div class="profile-image">
+          <img src="images/user.svg" width="100px" />
+          <label for="file-upload" class="custom-file-upload">
+            SELECT IMAGE
+          </label>
+        </div>
+        <h3>{{ form.controls.username.value }}</h3>
+      </div>
+
+      <div class="profile-container">
+        <form [formGroup]="form">
+          <div class="form-field">
+            <label>First name</label>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                placeholder="Enter your name"
+                formControlName="firstName"
+              />
+              <mat-icon matSuffix>person</mat-icon>
+              <mat-error
+                app-field-error-messages
+                controlName="firstName"
+              ></mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-field">
+            <label>Last name</label>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                placeholder="Enter your last name"
+                formControlName="lastName"
+              />
+              <mat-icon matSuffix>badge</mat-icon>
+              <mat-error
+                app-field-error-messages
+                controlName="lastName"
+              ></mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-field">
+            <label>Email</label>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                placeholder="example@example.com"
+                formControlName="email"
+              />
+              <mat-icon matSuffix>mail</mat-icon>
+              <mat-error app-field-error-messages controlName="email"
+                >The email is
+                <strong>required</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-field">
+            <label>Password</label>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                type="password"
+                placeholder="Enter a password"
+                formControlName="password"
+              />
+              <mat-icon matSuffix>visibility</mat-icon>
+            </mat-form-field>
+          </div>
+
+          <div class="form-field">
+            <label>New Password</label>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                type="password"
+                placeholder="Enter a new password"
+                formControlName="newPassword"
+              />
+              <mat-icon matSuffix>visibility</mat-icon>
+            </mat-form-field>
+          </div>
+
+          <div class="form-field">
+            <label>Confirm Password</label>
+            <mat-form-field appearance="outline">
+              <input
+                matInput
+                type="password"
+                placeholder="Re-enter the password"
+                formControlName="confirmPassword"
+              />
+              <mat-icon matSuffix>visibility</mat-icon>
+            </mat-form-field>
+          </div>
+          <div class="btn-container">
+            <button mat-button class="primary-button">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  }
+</div>
