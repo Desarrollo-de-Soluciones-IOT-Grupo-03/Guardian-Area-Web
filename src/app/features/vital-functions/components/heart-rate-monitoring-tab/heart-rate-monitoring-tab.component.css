@@ -9,11 +9,12 @@
   gap: 20px;
   justify-content: space-between;
   gap: 2rem;
+  flex-direction: row;
 }
 
 .chart-container {
   flex: 1;
-  min-width: 400px;
+  min-width: 300px;
 }
 
 .tip-container {
@@ -47,12 +48,11 @@ strong {
   margin-top: 2rem;
 }
 
+
 @media (max-width: 768px) {
   .heart-rate-container {
       flex-direction: column;
   }
 
-  .chart-container, .tip-container {
-      width: 100%;
-  }
+
 }
