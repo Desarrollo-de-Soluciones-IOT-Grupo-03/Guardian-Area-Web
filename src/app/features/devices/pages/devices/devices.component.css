@@ -7,7 +7,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 350px;
+  min-width: 340px;
+  width: 50%;
+  max-width: 450px;
   h3,
   h5 {
     margin: 0;
