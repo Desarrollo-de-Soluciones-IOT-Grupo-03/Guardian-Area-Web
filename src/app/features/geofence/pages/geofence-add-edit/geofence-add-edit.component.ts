@@ -102,6 +102,12 @@ export class GeofenceAddEditComponent implements OnInit {
     });
 
     this.map?.on('load', () => {
+      const animatedCanvas = this.createAnimatedImage();
+
+      createImageBitmap(animatedCanvas).then((imageBitmap) => {
+        this.map!.addImage('animated-location', imageBitmap);
+      });
+
       if (!this.map?.getSource('device-location')) {
         this.map!.addSource('device-location', {
           type: 'geojson',
