@@ -119,3 +119,8 @@ button:hover {
   margin-top: 1rem;
   padding: 0px 1rem;
 }
+
+/* General */
+.hover {
+  cursor: pointer;
+}
