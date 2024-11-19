@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { SpinnerService } from '@app/shared/services/spinner.service';
+import { SpinnerService } from '@shared/services';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -7,7 +7,7 @@ import { Subscription } from 'rxjs';
   standalone: true,
   imports: [],
   templateUrl: './spinner.component.html',
-  styleUrl: './spinner.component.css'
+  styleUrl: './spinner.component.css',
 })
 export class SpinnerComponent implements OnInit {
   private _spinnerService = inject(SpinnerService);
@@ -15,9 +15,11 @@ export class SpinnerComponent implements OnInit {
   spinnerSubscription!: Subscription;
 
   ngOnInit(): void {
-    this.spinnerSubscription = this._spinnerService.onObservable().subscribe(viewSpinner => {
-      this.showSpinner = viewSpinner;
-    });
+    this.spinnerSubscription = this._spinnerService
+      .onObservable()
+      .subscribe((viewSpinner) => {
+        this.showSpinner = viewSpinner;
+      });
   }
 
   ngOnDestroy(): void {
