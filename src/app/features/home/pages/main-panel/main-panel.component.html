@@ -1,32 +1,32 @@
 <div class="container">
-  <h3>Mapa de Monitoreo en Tiempo Real</h3>
+  <h3>Real Time Monitoring Map</h3>
   <div class="mini-map-container">
-    <app-mini-map  />
+    <app-mini-map />
   </div>
-  <h3>Últimas Actividades</h3>
-<table mat-table [dataSource]="activities" >
-  <ng-container matColumnDef="evento">
-    <th mat-header-cell *matHeaderCellDef> Evento </th>
-    <td mat-cell *matCellDef="let element"> {{element.evento}} </td>
-  </ng-container>
+  <div class="health-container">
+    <div class="health-card bpm-card">
+      <img src="images/heart-sensor.svg" alt="Heart Icon" class="card-image" />
+      <div class="card-content">
+        <div class="card-header">Heart Rate</div>
+        <div class="card-value">
+          <span class="value">{{ bpm }}</span>
+          <span class="unit">bpm</span>
+        </div>
+      </div>
+    </div>
 
-  <ng-container matColumnDef="fechaHora">
-    <th mat-header-cell *matHeaderCellDef> Fecha y Hora </th>
-    <td mat-cell *matCellDef="let element"> {{element.fechaHora | date:'short'}} </td>
-  </ng-container>
+    <div class="health-card spo2-card">
+      <img src="images/spo2-sensor.svg" alt="Oxygen Icon" class="card-image" />
+      <div class="card-content">
+        <div class="card-header">Oxygenation</div>
+        <div class="card-value">
+          <span class="value">{{ spo2 }}</span>
+          <span class="unit">%</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
-  <ng-container matColumnDef="duracion">
-    <th mat-header-cell *matHeaderCellDef> Duración </th>
-    <td mat-cell *matCellDef="let element"> {{element.duracion}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="accionTomada">
-    <th mat-header-cell *matHeaderCellDef> Acción Tomada </th>
-    <td mat-cell *matCellDef="let element"> {{element.accionTomada}} </td>
-  </ng-container>
-
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
+  <h3 class="header-activity">Latest Activities</h3>
+  <app-table-activities />
 </div>

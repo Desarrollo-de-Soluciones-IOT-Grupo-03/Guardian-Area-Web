@@ -1,0 +1,55 @@
+<div class="container">
+  <div class="header-container">
+    <h2>Devices</h2>
+    <span class="flex-spacer"></span>
+    <button
+      mat-button
+      class="primary-button icon-button"
+      (click)="openAddDeviceDialog()"
+    >
+      <mat-icon class="icon">add</mat-icon>Add
+    </button>
+  </div>
+  @if (showSpinner) {
+    <div class="spinner-container">
+      <div class="spinner-border" role="status"></div>
+    </div>
+  } @else {
+    <div class="devices-container">
+      @for (device of devices; track $index) {
+        <div
+          class="device-container hover"
+          (click)="selectDevice(device)"
+          [ngClass]="{
+            selected: selectedDeviceId == device.guardianAreaDeviceRecordId,
+          }"
+        >
+          <img src="images/watch.svg" alt="Device Image" />
+          <div>
+            <h3>{{ device.nickname }}</h3>
+            <p>{{ device.bearer | underScoreToSpace }}</p>
+            <span class="device-mode">{{ device.careMode | titlecase }}</span>
+          </div>
+          <h5
+            [ngStyle]="{
+              color: device.status == deviceState.CONNECTED ? 'green' : 'red',
+            }"
+          >
+            {{ device.status }}
+          </h5>
+          <mat-icon
+            matListItemIcon
+            [matMenuTriggerFor]="menu"
+            (click)="$event.stopPropagation()"
+            >more_vert</mat-icon
+          >
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="openEditDeviceDialog(device)">
+              <span>Update</span>
+            </button>
+          </mat-menu>
+        </div>
+      }
+    </div>
+  }
+</div>

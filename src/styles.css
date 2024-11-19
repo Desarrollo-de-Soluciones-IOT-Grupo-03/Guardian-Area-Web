@@ -1,5 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-*{
+* {
   box-sizing: border-box;
 }
 
@@ -10,11 +10,11 @@ body {
 }
 
 :root {
-  --primary-color: #02273A;
+  --primary-color: #02273a;
   --accent-color: #34a1de;
   --warn-color: #ffae1f;
-  --card-secondary: #EBF3FE;
-  --table-primary: #49BEFF;
+  --card-secondary: #ebf3fe;
+  --table-primary: #49beff;
 }
 
 /* Custom Input */
@@ -38,22 +38,89 @@ body {
 }
 
 /* Custom button */
-.primary-button{
-  padding: 0.5rem 1rem;
-  background-color: var(--primary-color);
-}
 
 .primary-button {
-  margin-top: 1rem;
-  width: 100%;
+  width: auto;
   padding: 1rem 1rem;
   border-radius: 0.6rem;
-  background-color: var(--primary-color)!important;
+  background-color: var(--primary-color) !important;
   color: white !important;
+  font-size: 1rem;
+}
+
+.outlined-button {
+  width: auto;
+  padding: 1rem 1rem;
+  border-radius: 0.6rem;
+  border: 1px solid var(--primary-color) !important;
+  color: var(--primary-color) !important;
+  background-color: white !important;
   font-size: 1rem;
 }
 
 a {
   color: var(--primary-color);
   text-decoration: none;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.flex-spacer {
+  flex: 1 1 auto;
+}
+
+.icon-button {
+  width: auto;
+  margin-top: 0;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: row;
+  h2 {
+    margin: 0;
+  }
+}
+
+/* Spinner */
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 1rem;
+}
+
+.spinner-border{
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: var(--primary-color);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  color: var(--primary-color);
+
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Principal Container */
+.container {
+  color: var(--primary-color);
+  margin-top: 1rem;
+  padding: 0px 1rem;
+}
+
+/* General */
+.hover {
+  cursor: pointer;
 }

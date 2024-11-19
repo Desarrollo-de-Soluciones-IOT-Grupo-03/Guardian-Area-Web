@@ -1,3 +1,3 @@
 export interface ActivityQuery {
-  userId: number;
+  activityType: string;
 }

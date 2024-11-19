@@ -1,0 +1,8 @@
+table {
+  background-color: #fff;
+  th, td {
+    color: var(--primary-color);
+    border-color: var(--table-primary);
+  }
+  margin-bottom: 10px;
+}

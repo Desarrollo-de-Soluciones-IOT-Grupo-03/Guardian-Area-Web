@@ -1,5 +1,7 @@
 .container{
   color: var(--primary-color);
+  margin: 0;
+  padding: 0;
 }
 
 .header {

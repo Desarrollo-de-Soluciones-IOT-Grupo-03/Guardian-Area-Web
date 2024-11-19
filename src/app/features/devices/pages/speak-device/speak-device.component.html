@@ -1,0 +1,47 @@
+<div class="chat-wrapper">
+  <div class="messages-container" #chatContainer>
+    <div
+      *ngFor="let message of messages"
+      class="message received"
+      [ngClass]="{ 'user-content': message.isUser }"
+    >
+      <div class="avatar" [ngClass]="{ 'bg-primary': message.isGuardiaArea }">
+        <img
+          [src]="
+            message.isGuardiaArea
+              ? 'images/guardian-area-logo.svg'
+              : 'images/user.svg'
+          "
+          width="20px"
+          alt="Avatar"
+        />
+      </div>
+      <div class="content">
+        <div
+          class="text"
+          [ngClass]="{ 'bg-text-user': message.isUser }"
+          [innerHTML]="message.content"
+        ></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="message-input">
+    <input
+      (keydown.enter)="sendMessage()"
+      type="text"
+      [(ngModel)]="currentMessage"
+      placeholder="Write a message, record audio, or type /help to see options"
+    />
+    <button class="send-button" (click)="sendMessage()">
+      <i class="material-icons">send</i>
+    </button>
+    <button
+      class="audio-button"
+      [ngClass]="{ recording: isRecording }"
+      (click)="toggleRecording()"
+    >
+      <i class="material-icons">{{ isRecording ? "stop" : "mic" }}</i>
+    </button>
+  </div>
+</div>

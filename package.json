@@ -21,6 +21,8 @@
     "@angular/platform-browser": "^18.2.0",
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
+    "angular-chart.js": "^1.1.1",
+    "chart.js": "^4.4.4",
     "dotenv": "^16.4.5",
     "firebase": "^10.13.2",
     "mapbox-gl": "^3.6.0",

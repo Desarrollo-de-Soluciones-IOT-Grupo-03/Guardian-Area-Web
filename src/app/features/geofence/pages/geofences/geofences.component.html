@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="header-container">
+    <h2>Geofences</h2>
+    <span class="flex-spacer"></span>
+    <button routerLink="add" mat-button class="primary-button icon-button">
+      <mat-icon class="icon">add</mat-icon>Add
+    </button>
+  </div>
+
+  @if (showSpinner) {
+    <div class="spinner-container">
+      <div class="spinner-border" role="status"></div>
+    </div>
+  } @else {
+    <div class="geofences-grid">
+      @for (geofence of geofences; track $index) {
+        <mat-card
+          appearance="outlined"
+          class="hover"
+          (click)="goToEditGeofence(geofence.id)"
+        >
+          <app-preview-map [coordinate]="geofence.coordinates[0]" />
+          <mat-card-content>
+            <h4>{{ geofence.name | titlecase }}</h4>
+            <p>{{ geofence.geoFenceStatus | titlecase }}</p>
+          </mat-card-content>
+        </mat-card>
+      }
+    </div>
+  }
+</div>

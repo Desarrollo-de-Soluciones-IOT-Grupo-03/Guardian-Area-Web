@@ -1,0 +1,18 @@
+@if (showSpinner) {
+  <div class="spinner-container">
+    <div class="spinner-border" role="status"></div>
+  </div>
+} @else {
+  <div class="container">
+    <img
+      src="images/user.svg"
+      alt="Guardian Area Logo"
+      width="25%"
+      height="auto"
+    />
+    <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+    <h3>{{ user.username }}</h3>
+    <p>{{ user.email }}</p>
+    <button class="primary-button" routerLink="edit">Edit Profile</button>
+  </div>
+}

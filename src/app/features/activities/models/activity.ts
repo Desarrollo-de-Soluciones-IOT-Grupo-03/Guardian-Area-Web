@@ -1,7 +1,6 @@
 export interface Activity {
-  evento: string;
-  fechaHora: Date;
-  duracion: string;
-  accionTomada: string;
-  userId: number;
+  activityName: string;
+  dateAndTime: string;
+  guardianAreaDeviceRecordId: string;
+  activityType: string;
 }

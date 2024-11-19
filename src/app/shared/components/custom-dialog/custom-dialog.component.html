@@ -1,0 +1,16 @@
+<div class="container">
+  <h2 mat-dialog-title class="custom-dialog-title">{{ title() }}</h2>
+  <mat-dialog-content>
+    <p>{{ message() }}</p>
+  </mat-dialog-content>
+  <mat-dialog-actions class="actions-container">
+    @if (secondaryButton()) {
+      <button mat-button class="outlined-button" (click)="dialogRef.close()">
+        {{ secondaryButton() }}
+      </button>
+    }
+    @if (primaryButton()) {
+      <button mat-button class="primary-button">{{ primaryButton() }}</button>
+    }
+  </mat-dialog-actions>
+</div>

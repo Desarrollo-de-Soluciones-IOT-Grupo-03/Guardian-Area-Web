@@ -1,0 +1,92 @@
+<div class="container">
+  <h2>{{ mode | titlecase }} Geofence</h2>
+
+  <div class="map-container">
+    <div #map id="map"></div>
+    <div class="floating-range">
+      <mat-slider min="-1" max="18" step="1">
+        <input
+          matSliderThumb
+          [value]="zoom"
+          (input)="zoomChanged(zoomInput.value)"
+          #zoomInput
+        />
+      </mat-slider>
+    </div>
+  </div>
+  <form [formGroup]="form">
+    <label mat-label class="geofence-label">Geofence Name</label>
+    <mat-form-field appearance="outline">
+      <input
+        type="text"
+        matInput
+        class="form-control"
+        formControlName="name"
+        placeholder="Enter the name"
+      />
+      <mat-error app-field-error-messages controlName="name"
+        >The name is <strong>required</strong></mat-error
+      >
+    </mat-form-field>
+  </form>
+
+  <div class="button-container">
+    <button
+      class="primary-button icon-button"
+      (click)="createMarker()"
+      [disabled]="markers.length >= 4"
+    >
+      <mat-icon>add_location</mat-icon> Add
+    </button>
+    <span class="flex-spacer"></span>
+    <button
+      class="primary-button icon-button"
+      (click)="onSave()"
+      [disabled]="markers.length < 3 || form.invalid"
+    >
+      <mat-icon>save</mat-icon> Save Geofence
+    </button>
+  </div>
+
+  <div class="markers-container">
+    <div class="table-container">
+      <table mat-table [dataSource]="markers">
+        <ng-container matColumnDef="latitude">
+          <th mat-header-cell *matHeaderCellDef class="latitude-column">
+            Latitude
+          </th>
+          <td mat-cell *matCellDef="let marker" class="latitude-column">
+            {{ marker._lngLat.lat | number: "1.5" }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="longitude">
+          <th mat-header-cell *matHeaderCellDef class="longitude-column">
+            Longitude
+          </th>
+          <td mat-cell *matCellDef="let marker" class="longitude-column">
+            {{ marker._lngLat.lng | number: "1.5" }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+          <th mat-header-cell *matHeaderCellDef class="actions-column">
+            Actions
+          </th>
+          <td
+            mat-cell
+            *matCellDef="let marker; let i = index"
+            class="actions-column"
+          >
+            <button class="primary-button delete" (click)="removeMarker(i)">
+              Delete
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </div>
+  </div>
+</div>

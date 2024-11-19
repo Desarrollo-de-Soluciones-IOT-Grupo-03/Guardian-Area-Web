@@ -1,0 +1,51 @@
+@if (showSpinner) {
+  <div class="spinner-container">
+    <div class="spinner-border" role="status"></div>
+  </div>
+} @else {
+  <div class="vital-container">
+    <div class="tab">
+      <ul>
+        <li
+          id="heart-tab"
+          (click)="tabChange('heart-tab')"
+          [class.active]="id == 'heart-tab'"
+        >
+          Heart Rate
+        </li>
+        <li
+          id="oxygenation-tab"
+          (click)="tabChange('oxygenation-tab')"
+          [class.active]="id == 'oxygenation-tab'"
+        >
+          Oxygenation Rate
+        </li>
+      </ul>
+      <div class="content">
+        @if (id == "heart-tab") {
+          <div class="content-value">
+            <app-heart-rate-monitoring-tab
+              [chart]="chart"
+              [dates]="dates"
+              [heartRateData]="heartRateData"
+            />
+            <h3>Activities</h3>
+            <app-table-activities [query]="{ activityType: 'BPM' }">
+            </app-table-activities>
+          </div>
+        } @else {
+          <div class="content-value">
+            <app-oxygenation-monitoring-tab
+              [chart2]="chart"
+              [dates]="dates"
+              [oxygenSaturationData]="oxygenSaturationData"
+            />
+            <h3>Activities</h3>
+            <app-table-activities [query]="{ activityType: 'SPO2' }">
+            </app-table-activities>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+}
