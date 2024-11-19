@@ -1,0 +1,141 @@
+.chat-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  overflow: hidden;
+}
+
+.messages-container {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px;
+  background-color: #fff;
+
+}
+
+.message-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 15px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+}
+
+.message {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.message.received {
+  flex-direction: row;
+}
+
+.message.sent {
+  flex-direction: row-reverse;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: rgb(219, 219, 219);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.text {
+  background-color: #e0e0e0;
+  padding: 10px 15px;
+  border-radius: 15px;
+  word-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.bg-text-user{
+  background-color: #7C8FAC;
+  color: white;
+}
+
+.message.sent .text {
+  background-color: #d9edf7;
+  color: #1a1a1a;
+  text-align: right;
+}
+
+.message-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid #ddd;
+  border-radius: 25px;
+  padding: 10px 15px;
+}
+
+.message-input input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+.message-input .send-button,
+.message-input .audio-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: var(--primary-color);
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.message-input .audio-button {
+  color: #ff5722;
+}
+
+.bg-primary{
+  background-color: var(--primary-color);
+}
+
+.user-content {
+  display: flex;
+  flex-direction: row-reverse;
+  align-self: flex-end;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.user-content .avatar {
+  order: 2;
+}
+
+.user-content .content {
+  order: 1;
+}
+
+.audio-button.recording {
+  background-color: red;
+  color: white;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 1px red;
+  }
+  50% {
+    box-shadow: 0 0 2px red;
+  }
+  100% {
+    box-shadow: 0 0 1px red;
+  }
+}

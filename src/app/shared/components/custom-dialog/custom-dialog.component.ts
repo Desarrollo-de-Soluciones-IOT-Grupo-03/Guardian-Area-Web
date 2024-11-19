@@ -1,15 +1,19 @@
 import { Component, inject, model } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule } from '@angular/material/dialog';
+import {
+  MatDialogRef,
+  MAT_DIALOG_DATA,
+  MatDialogModule,
+} from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { DialogData } from '@app/shared/models/dialog-data';
+import { DialogData } from '@shared/models';
 
 @Component({
   selector: 'app-custom-dialog',
   standalone: true,
   imports: [MatButtonModule, MatDialogModule, MatFormFieldModule],
   templateUrl: './custom-dialog.component.html',
-  styleUrl: './custom-dialog.component.css'
+  styleUrl: './custom-dialog.component.css',
 })
 export class CustomDialogComponent {
   public dialogRef = inject(MatDialogRef<CustomDialogComponent>);
@@ -18,5 +22,4 @@ export class CustomDialogComponent {
   readonly message = model(this.data.message);
   readonly primaryButton = model(this.data.primaryButton);
   readonly secondaryButton = model(this.data.secondaryButton);
-
 }

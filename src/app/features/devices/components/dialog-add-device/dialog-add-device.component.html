@@ -1,12 +1,25 @@
-<div class="container">
-  <h2 mat-dialog-title class="custom-dialog-title"> Enter the device ID</h2>
+<div class="container content-center">
+  <h2 mat-dialog-title class="custom-dialog-title">Enter the device ID</h2>
   <mat-dialog-content>
     <mat-form-field appearance="outline">
-      <input matInput class="form-control" [(ngModel)]="deviceId" placeholder="Device ID">
+      <input
+        matInput
+        class="form-control"
+        [(ngModel)]="deviceId"
+        placeholder="Device ID"
+      />
     </mat-form-field>
   </mat-dialog-content>
   <mat-dialog-actions class="actions-container">
-    <button mat-button class="outlined-button" (click)="dialogRef.close(0)">Cancel</button>
-    <button mat-button class="primary-button" (click)="dialogRef.close(deviceId)">Add</button>
+    <button mat-button class="outlined-button" (click)="dialogRef.close(0)">
+      Cancel
+    </button>
+    <button
+      mat-button
+      class="primary-button"
+      (click)="dialogRef.close(deviceId)"
+    >
+      Add
+    </button>
   </mat-dialog-actions>
 </div>
